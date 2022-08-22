@@ -9,6 +9,8 @@ SDL_Renderer *renderer = NULL;
 int window_width = 800;
 int window_height = 600;
 uint32_t *color_buffer = NULL;
+SDL_Texture *color_buffer_texture = NULL;
+
 
 bool initialize_window(void)
 {
@@ -52,9 +54,12 @@ void setup(void)
     if (!color_buffer) {
         fprintf(stderr, "Error allocating the color buffer.\n");
     }
+
+    // Create the SDL texture used to display the color_buffer
+    color_buffer_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, window_width, window_height);
 }
 
-void process_input()
+void process_input(void)
 {
     SDL_Event event;
     SDL_PollEvent(&event);
@@ -73,6 +78,20 @@ void process_input()
     }
 }
 
+void render_color_buffer(void)
+{
+    SDL_UpdateTexture(color_buffer_texture, NULL, color_buffer, (int)(sizeof(uint32_t) * window_width));
+    SDL_RenderCopy(renderer, color_buffer_texture, NULL, NULL);
+}
+
+void clear_color_buffer(uint32_t clear_color) {
+    for(int y = 0; y < window_height; y++){
+        for(int x = 0; x < window_width; x++) {
+            color_buffer[(y * window_width) + x] = clear_color;       
+        }
+    }
+}
+
 void update(void)
 {
 }
@@ -82,7 +101,8 @@ void render(void)
     SDL_SetRenderDrawColor(renderer, 50, 150, 50, 255);
     SDL_RenderClear(renderer);
 
-    // TODO:...
+    render_color_buffer();
+    clear_color_buffer(0xFFFFFF00);
 
     SDL_RenderPresent(renderer);
 }
