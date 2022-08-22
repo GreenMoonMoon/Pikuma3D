@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/pikuma3d.dir/src/display.c.obj"
+  "CMakeFiles/pikuma3d.dir/src/display.c.obj.d"
   "CMakeFiles/pikuma3d.dir/src/main.c.obj"
   "CMakeFiles/pikuma3d.dir/src/main.c.obj.d"
   "libpikuma3d.dll.a"

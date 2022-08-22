@@ -9,5 +9,9 @@ find_package(SDL2 REQUIRED PATHS external/SDL2/lib/cmake)
 include_directories(${SDL2_INCLUDE_DIRS})
 
 
-add_executable(pikuma3d src/main.c)
+set(SOURCE_FILES
+    src/main.c
+    src/display.c)
+
+add_executable(pikuma3d ${SOURCE_FILES})
 target_link_libraries(pikuma3d ${SDL2_STATIC_LIBRARIES})

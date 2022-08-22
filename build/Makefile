@@ -128,6 +128,30 @@ pikuma3d/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\pikuma3d.dir\build.make CMakeFiles/pikuma3d.dir/build
 .PHONY : pikuma3d/fast
 
+src/display.obj: src/display.c.obj
+.PHONY : src/display.obj
+
+# target to build an object file
+src/display.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\pikuma3d.dir\build.make CMakeFiles/pikuma3d.dir/src/display.c.obj
+.PHONY : src/display.c.obj
+
+src/display.i: src/display.c.i
+.PHONY : src/display.i
+
+# target to preprocess a source file
+src/display.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\pikuma3d.dir\build.make CMakeFiles/pikuma3d.dir/src/display.c.i
+.PHONY : src/display.c.i
+
+src/display.s: src/display.c.s
+.PHONY : src/display.s
+
+# target to generate assembly for a file
+src/display.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\pikuma3d.dir\build.make CMakeFiles/pikuma3d.dir/src/display.c.s
+.PHONY : src/display.c.s
+
 src/main.obj: src/main.c.obj
 .PHONY : src/main.obj
 
@@ -161,6 +185,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... pikuma3d
+	@echo ... src/display.obj
+	@echo ... src/display.i
+	@echo ... src/display.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

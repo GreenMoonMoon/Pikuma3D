@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/Projects/Pikuma3D/src/display.c" "CMakeFiles/pikuma3d.dir/src/display.c.obj" "gcc" "CMakeFiles/pikuma3d.dir/src/display.c.obj.d"
   "C:/Projects/Pikuma3D/src/main.c" "CMakeFiles/pikuma3d.dir/src/main.c.obj" "gcc" "CMakeFiles/pikuma3d.dir/src/main.c.obj.d"
   )
 
