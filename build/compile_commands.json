@@ -1,0 +1,7 @@
+[
+{
+  "directory": "C:/Projects/Pikuma3D/build",
+  "command": "C:\\toolchain\\mingw64\\bin\\gcc.exe  @CMakeFiles/pikuma3d.dir/includes_C.rsp -g -std=gnu11 -o CMakeFiles\\pikuma3d.dir\\src\\main.c.obj -c C:\\Projects\\Pikuma3D\\src\\main.c",
+  "file": "C:/Projects/Pikuma3D/src/main.c"
+}
+]
