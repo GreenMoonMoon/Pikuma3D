@@ -3,6 +3,7 @@
 
 #include <stdbool.h>
 #include "SDL.h"
+#include "vector.h"
 
 extern SDL_Window *window;
 extern SDL_Renderer *renderer;

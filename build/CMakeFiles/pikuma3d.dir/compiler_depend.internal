@@ -179,6 +179,7 @@ CMakeFiles/pikuma3d.dir/src/display.c.obj
  C:/Projects/Pikuma3D/external/SDL2/include/SDL2/SDL_version.h
  C:/Projects/Pikuma3D/external/SDL2/include/SDL2/SDL_locale.h
  C:/Projects/Pikuma3D/external/SDL2/include/SDL2/SDL_misc.h
+ C:/Projects/Pikuma3D/src/vector.h
  C:/toolchain/mingw64/x86_64-w64-mingw32/include/stdio.h
  C:/toolchain/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h
  C:/toolchain/mingw64/x86_64-w64-mingw32/include/swprintf.inl

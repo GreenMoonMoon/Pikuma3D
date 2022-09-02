@@ -178,6 +178,7 @@ CMakeFiles/pikuma3d.dir/src/display.c.obj: ../src/display.c \
   ../external/SDL2/include/SDL2/SDL_version.h \
   ../external/SDL2/include/SDL2/SDL_locale.h \
   ../external/SDL2/include/SDL2/SDL_misc.h \
+  ../src/vector.h \
   C:/toolchain/mingw64/x86_64-w64-mingw32/include/stdio.h \
   C:/toolchain/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
   C:/toolchain/mingw64/x86_64-w64-mingw32/include/swprintf.inl \
@@ -724,6 +725,8 @@ C:/toolchain/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/include/xopintrin.h:
 
 ../external/SDL2/include/SDL2/SDL_version.h:
 
+../src/vector.h:
+
 C:/toolchain/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h:
 
 C:/toolchain/mingw64/x86_64-w64-mingw32/include/swprintf.inl:
@@ -731,7 +734,5 @@ C:/toolchain/mingw64/x86_64-w64-mingw32/include/swprintf.inl:
 C:/toolchain/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h:
 
 ../src/main.c:
-
-../src/vector.h:
 
 ../src/camera.h:

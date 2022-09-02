@@ -55,7 +55,7 @@ void uninitialize_window(void)
 }
 
 void draw_pixel(int x, int y, uint32_t color) {
-    if (x > window_width || y > window_height) return;
+    if (x < 0 || x > window_width || y < 0 || y > window_height) return;
     color_buffer[(y * window_width) + x] = color;
 }
 
@@ -94,7 +94,7 @@ void draw_rectangle(int x, int y, int width, int height, uint32_t color)
             int current_x = j + x;
             int current_y = i + y;
 
-            color_buffer[(current_y * window_width) + current_x] = color;
+            draw_pixel(current_x, current_y, color);
         }
     }
 }
