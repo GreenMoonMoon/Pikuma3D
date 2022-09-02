@@ -54,27 +54,32 @@ void uninitialize_window(void)
     SDL_Quit();
 }
 
-void draw_grid(void)
+void draw_pixel(int x, int y, uint32_t color) {
+    if (x > window_width || y > window_height) return;
+    color_buffer[(y * window_width) + x] = color;
+}
+
+void draw_grid(int w, int h, uint32_t color)
 {
     for (int y = 0; y < window_height; y++)
     {
         for (int x = 0; x < window_width; x++)
         {
-            if (x % 100 == 0 || y % 100 == 0)
+            if (x % w == 0 || y % h == 0)
             {
-                color_buffer[(y * window_width) + x] = 0xFFAAAAAA;
+                color_buffer[(y * window_width) + x] = color;
             }
         }
     }
 }
 
-void draw_point_grid(void)
+void draw_point_grid(int w, int h, uint32_t color)
 {
-    for (int y = 0; y < window_height; y += 100)
+    for (int y = 0; y < window_height; y += h)
     {
-        for (int x = 0; x < window_width; x += 100)
+        for (int x = 0; x < window_width; x += w)
         {
-            color_buffer[(y * window_width) + x] = 0xFFAAAAAA;
+            color_buffer[(y * window_width) + x] = color;
         }
     }
 }

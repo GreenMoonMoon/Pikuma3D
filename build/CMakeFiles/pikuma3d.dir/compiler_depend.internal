@@ -186,6 +186,17 @@ CMakeFiles/pikuma3d.dir/src/display.c.obj
 
 CMakeFiles/pikuma3d.dir/src/main.c.obj
  C:/Projects/Pikuma3D/src/main.c
+ C:/toolchain/mingw64/x86_64-w64-mingw32/include/stdio.h
+ C:/toolchain/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h
+ C:/toolchain/mingw64/x86_64-w64-mingw32/include/corecrt.h
+ C:/toolchain/mingw64/x86_64-w64-mingw32/include/_mingw.h
+ C:/toolchain/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h
+ C:/toolchain/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h
+ C:/toolchain/mingw64/x86_64-w64-mingw32/include/vadefs.h
+ C:/toolchain/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h
+ C:/toolchain/mingw64/x86_64-w64-mingw32/include/_mingw_off_t.h
+ C:/toolchain/mingw64/x86_64-w64-mingw32/include/swprintf.inl
+ C:/toolchain/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h
  C:/Projects/Pikuma3D/src/display.h
  C:/toolchain/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/include/stdbool.h
  C:/Projects/Pikuma3D/external/SDL2/include/SDL2/SDL.h
@@ -201,12 +212,6 @@ CMakeFiles/pikuma3d.dir/src/main.c.obj
  C:/toolchain/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/include/stddef.h
  C:/toolchain/mingw64/x86_64-w64-mingw32/include/stddef.h
  C:/toolchain/mingw64/x86_64-w64-mingw32/include/crtdefs.h
- C:/toolchain/mingw64/x86_64-w64-mingw32/include/corecrt.h
- C:/toolchain/mingw64/x86_64-w64-mingw32/include/_mingw.h
- C:/toolchain/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h
- C:/toolchain/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h
- C:/toolchain/mingw64/x86_64-w64-mingw32/include/vadefs.h
- C:/toolchain/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h
  C:/toolchain/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/include/stdarg.h
  C:/toolchain/mingw64/x86_64-w64-mingw32/include/stdarg.h
  C:/toolchain/mingw64/x86_64-w64-mingw32/include/_mingw_stdarg.h
@@ -222,7 +227,6 @@ CMakeFiles/pikuma3d.dir/src/main.c.obj
  C:/toolchain/mingw64/x86_64-w64-mingw32/include/process.h
  C:/toolchain/mingw64/x86_64-w64-mingw32/include/corecrt_startup.h
  C:/toolchain/mingw64/x86_64-w64-mingw32/include/sys/types.h
- C:/toolchain/mingw64/x86_64-w64-mingw32/include/_mingw_off_t.h
  C:/Projects/Pikuma3D/external/SDL2/include/SDL2/SDL_rwops.h
  C:/Projects/Pikuma3D/external/SDL2/include/SDL2/SDL_clipboard.h
  C:/Projects/Pikuma3D/external/SDL2/include/SDL2/SDL_cpuinfo.h
@@ -362,4 +366,6 @@ CMakeFiles/pikuma3d.dir/src/main.c.obj
  C:/Projects/Pikuma3D/external/SDL2/include/SDL2/SDL_version.h
  C:/Projects/Pikuma3D/external/SDL2/include/SDL2/SDL_locale.h
  C:/Projects/Pikuma3D/external/SDL2/include/SDL2/SDL_misc.h
+ C:/Projects/Pikuma3D/src/vector.h
+ C:/Projects/Pikuma3D/src/camera.h
 

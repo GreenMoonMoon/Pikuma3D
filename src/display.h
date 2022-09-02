@@ -16,9 +16,11 @@ bool initialize_window(void);
 
 void uninitialize_window(void);
 
-void draw_grid(void);
+void draw_pixel(int x, int y, uint32_t color);
 
-void draw_point_grid(void);
+void draw_grid(int w, int h, uint32_t color);
+
+void draw_point_grid(int w, int h, uint32_t color);
 
 void draw_rectangle(int x, int y, int width, int height, uint32_t color);
 
@@ -26,4 +28,4 @@ void render_color_buffer(void);
 
 void clear_color_buffer(uint32_t clear_color);
 
-#endif //DISPLAY_H
+#endif // DISPLAY_H
