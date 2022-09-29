@@ -4,10 +4,20 @@
 #include "vector.h"
 #include "triangle.h"
 
-#define MESH_VERTEX_COUNT 8
-extern vec3_t cube_vertices[MESH_VERTEX_COUNT];
+#define CUBE_VERTEX_COUNT 8
+#define CUBE_FACE_COUNT (6 * 2)
 
-#define MESH_FACE_COUNT (6 * 2)
-extern face_t cube_faces[MESH_FACE_COUNT];
+extern vec3_t cube_vertices[CUBE_VERTEX_COUNT];
+extern face_t cube_faces[CUBE_FACE_COUNT];
+
+typedef struct{
+    vec3_t *vertices; // Dynamic array of vertices;
+    face_t *faces;    // Dynamic array of faces;
+    vec3_t rotation;
+} mesh_t;
+
+extern mesh_t mesh;
+
+void load_cube_mesh(void);
 
 #endif // MESH_H

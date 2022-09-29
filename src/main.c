@@ -6,8 +6,6 @@
 #include "triangle.h"
 #include "array.h"
 
-vec3_t cube_rotation = {.x = 0.0f, .y = 0.0f, .z = 0.0f};
-
 // mesh data processed for rendering
 vec3_t *transformed_mesh_vertices = NULL;
 triangle_t *projected_mesh_faces = NULL;
@@ -35,6 +33,9 @@ vec2_t project(const vec3_t point)
 
 void setup(void)
 {
+    // Load the cube mesh into the mesh global
+    load_cube_mesh();
+
     // Color format: ARGB
     // Allocate memory for color_buffer
     color_buffer = (uint32_t *)malloc(sizeof(uint32_t) * window_width * window_height);
@@ -84,19 +85,19 @@ void update(void)
     
 
     // Update cube rotation
-    cube_rotation.x += 0.01f;
-    cube_rotation.y += 0.005f;
-    cube_rotation.z += 0.02f;
+    mesh.rotation.z += 0.02f;
+    mesh.rotation.x += 0.01f;
+    mesh.rotation.y += 0.005f;
 
     // Tranform each vertex
-    for (int i = 0; i < MESH_VERTEX_COUNT; i++)
+    for (int i = 0; i < array_length(mesh.vertices); i++)
     {
-        vec3_t vertex = cube_vertices[i];
+        vec3_t vertex = mesh.vertices[i];
 
         // Rotate the point around the Y axis
-        vec3_t transformed_vertex = vec3_rotate_x(vertex, cube_rotation.x);
-        transformed_vertex = vec3_rotate_y(transformed_vertex, cube_rotation.y);
-        transformed_vertex = vec3_rotate_z(transformed_vertex, cube_rotation.z);
+        vec3_t transformed_vertex = vec3_rotate_x(vertex, mesh.rotation.x);
+        transformed_vertex = vec3_rotate_y(transformed_vertex, mesh.rotation.y);
+        transformed_vertex = vec3_rotate_z(transformed_vertex, mesh.rotation.z);
 
         // Translate the point away from the camera
         transformed_vertex.z -= camera.position.z;
@@ -105,9 +106,9 @@ void update(void)
     }
 
     // For each face, project its vertices
-    for (int i = 0; i < MESH_FACE_COUNT; i++)
+    for (int i = 0; i < array_length(mesh.faces); i++)
     {
-        face_t face = cube_faces[i];
+        face_t face = mesh.faces[i];
 
         triangle_t triangle;
         // Project the point on the screen

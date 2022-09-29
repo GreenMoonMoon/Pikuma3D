@@ -3,7 +3,11 @@
         "stdbool.h": "c",
         "sdl.h": "c",
         "display.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "triangle.h": "c",
+        "camera.h": "c",
+        "mesh.h": "c",
+        "array.h": "c"
     },
     "cmake.configureOnOpen": true
 }
