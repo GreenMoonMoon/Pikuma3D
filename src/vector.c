@@ -1,5 +1,10 @@
 #include "vector.h"
+#include <math.h>
 
+/// @brief Rotate a vector around the X axis
+/// @param v Vector to rotate
+/// @param a Angle of rotation
+/// @return Rotated Vector
 vec3_t vec3_rotate_x(vec3_t v, float a){
     vec3_t r = {
         .x = v.x,
@@ -9,6 +14,10 @@ vec3_t vec3_rotate_x(vec3_t v, float a){
     return r;
 }
 
+/// @brief Rotate a vector around the Y axis
+/// @param v Vector to rotate
+/// @param a Angle of rotation
+/// @return Rotated Vector
 vec3_t vec3_rotate_y(vec3_t v, float a){
     vec3_t r = {
         .x = v.x * cos(a) - v.z * sin(a),
@@ -18,6 +27,10 @@ vec3_t vec3_rotate_y(vec3_t v, float a){
     return r;
 }
 
+/// @brief Rotate a vector around the Z axis
+/// @param v Vector to rotate
+/// @param a Angle of rotation
+/// @return Rotated Vector
 vec3_t vec3_rotate_z(vec3_t v, float a){
     vec3_t r = {
         .x = v.x * cos(a) - v.y * sin(a),

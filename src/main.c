@@ -9,12 +9,12 @@ vec3_t cube_points[NUMBER_OF_POINTS];
 vec2_t projected_points[NUMBER_OF_POINTS];
 
 camera_t camera = {
-    .position = {.x = 0.0, .y = 0.0, .z = -5.0},
-    .rotation = {.x = 0.0, .y = 0.0, .z = 0.0},
-    .fov = 640.0
+    .position = {.x = 0.0f, .y = 0.0f, .z = -5.0f},
+    .rotation = {.x = 0.0f, .y = 0.0f, .z = 0.0f},
+    .fov = 640.0f
 };
 
-vec3_t cube_rotation = {.x = 0.0, .y = 0.0, .z = 0.0};
+vec3_t cube_rotation = {.x = 0.0f, .y = 0.0f, .z = 0.0f};
 
 bool is_running = false;
 
@@ -43,16 +43,16 @@ void setup(void)
     color_buffer_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, window_width, window_height);
 
     int cube_count = 0;
-    const float factor = 2.0 / 9.0;
+    const float factor = 2.0f / 9.0f;
     for (int x = 0; x < 9; x++)
     {
         for (int y = 0; y < 9; y++)
         {
             for (int z = 0; z < 9; z++)
             {
-                vec3_t point = {.x = x * factor - 1.0,
-                                .y = y * factor - 1.0,
-                                .z = z * factor - 1.0};
+                vec3_t point = {.x = x * factor - 1.0f,
+                                .y = y * factor - 1.0f,
+                                .z = z * factor - 1.0f};
                 cube_points[cube_count++] = point;
             }
         }
@@ -86,14 +86,25 @@ void process_input(void)
 void update(void)
 {
     //Update cube rotation
-    cube_rotation.y += 0.1;
-
+    cube_rotation.x += 0.01f;
+    cube_rotation.y += 0.005f;
+    cube_rotation.z += 0.02f;
 
     for (int i = 0; i < NUMBER_OF_POINTS; i++)
     {
+        // Get the point to process
         vec3_t point = cube_points[i];
-        point.z -= camera.position.z;
-        projected_points[i] = project(point);
+
+        // Rotate the point around the Y axis
+        vec3_t transformed_point = vec3_rotate_x(point, cube_rotation.x);
+        transformed_point = vec3_rotate_y(transformed_point, cube_rotation.y);
+        transformed_point = vec3_rotate_z(transformed_point, cube_rotation.z);
+
+        // Translate the point away from the camera
+        transformed_point.z -= camera.position.z;
+
+        // Project the point on the screen        
+        projected_points[i] = project(transformed_point);
     }
 }
 
@@ -108,8 +119,8 @@ void render(void)
         vec2_t projected_point = projected_points[i];
 
         draw_rectangle(
-            projected_point.x + (window_width * 0.5),
-            projected_point.y + (window_height * 0.5),
+            projected_point.x + (window_width * 0.5f),
+            projected_point.y + (window_height * 0.5f),
             5,
             5,
             0xFFFFFF00);
