@@ -14,6 +14,8 @@ camera_t camera = {
     .fov = 640.0
 };
 
+vec3_t cube_rotation = {.x = 0.0, .y = 0.0, .z = 0.0};
+
 bool is_running = false;
 
 /// @brief Take a 3D vector and returns a projected point
@@ -83,6 +85,10 @@ void process_input(void)
 
 void update(void)
 {
+    //Update cube rotation
+    cube_rotation.y += 0.1;
+
+
     for (int i = 0; i < NUMBER_OF_POINTS; i++)
     {
         vec3_t point = cube_points[i];

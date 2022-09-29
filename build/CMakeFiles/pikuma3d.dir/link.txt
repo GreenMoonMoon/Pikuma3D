@@ -1,3 +1,0 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\pikuma3d.dir/objects.a
-C:\toolchain\mingw64\bin\ar.exe qc CMakeFiles\pikuma3d.dir/objects.a @CMakeFiles\pikuma3d.dir\objects1.rsp
-C:\toolchain\mingw64\bin\gcc.exe -g -Wl,--undefined=WinMain -Wl,--whole-archive CMakeFiles\pikuma3d.dir/objects.a -Wl,--no-whole-archive -o pikuma3d.exe -Wl,--out-implib,libpikuma3d.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\pikuma3d.dir\linklibs.rsp

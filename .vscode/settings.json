@@ -3,5 +3,6 @@
         "stdbool.h": "c",
         "sdl.h": "c",
         "display.h": "c"
-    }
+    },
+    "cmake.configureOnOpen": true
 }
