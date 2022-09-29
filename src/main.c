@@ -2,21 +2,24 @@
 #include "display.h"
 #include "vector.h"
 #include "camera.h"
-
-/// Cube points cloud
-#define NUMBER_OF_POINTS (9 * 9 * 9)
-vec3_t cube_points[NUMBER_OF_POINTS];
-vec2_t projected_points[NUMBER_OF_POINTS];
-
-camera_t camera = {
-    .position = {.x = 0.0f, .y = 0.0f, .z = -5.0f},
-    .rotation = {.x = 0.0f, .y = 0.0f, .z = 0.0f},
-    .fov = 640.0f
-};
+#include "mesh.h"
+#include "triangle.h"
 
 vec3_t cube_rotation = {.x = 0.0f, .y = 0.0f, .z = 0.0f};
 
+// mesh data processed for rendering
+vec3_t transformed_mesh_vertices[MESH_VERTEX_COUNT];
+triangle_t projected_mesh_faces[MESH_FACE_COUNT];
+
+// Camera
+camera_t camera = {
+    .position = {.x = 0.0f, .y = 0.0f, .z = -5.0f},
+    .rotation = {.x = 0.0f, .y = 0.0f, .z = 0.0f},
+    .fov = 640.0f};
+
+// Game variables
 bool is_running = false;
+int previous_frame_time;
 
 /// @brief Take a 3D vector and returns a projected point
 /// @param point 3D vector representing a position in space
@@ -41,22 +44,6 @@ void setup(void)
 
     // Create the SDL texture used to display the color_buffer
     color_buffer_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, window_width, window_height);
-
-    int cube_count = 0;
-    const float factor = 2.0f / 9.0f;
-    for (int x = 0; x < 9; x++)
-    {
-        for (int y = 0; y < 9; y++)
-        {
-            for (int z = 0; z < 9; z++)
-            {
-                vec3_t point = {.x = x * factor - 1.0f,
-                                .y = y * factor - 1.0f,
-                                .z = z * factor - 1.0f};
-                cube_points[cube_count++] = point;
-            }
-        }
-    }
 }
 
 void teardown(void)
@@ -85,26 +72,47 @@ void process_input(void)
 
 void update(void)
 {
-    //Update cube rotation
+    int remaining_time = FRAME_TARGET_TIME - (previous_frame_time - SDL_GetTicks());
+    if (remaining_time > 0 && remaining_time <= FRAME_TARGET_TIME)
+        SDL_Delay(remaining_time);
+
+    previous_frame_time = SDL_GetTicks();
+
+    // Update cube rotation
     cube_rotation.x += 0.01f;
     cube_rotation.y += 0.005f;
     cube_rotation.z += 0.02f;
 
-    for (int i = 0; i < NUMBER_OF_POINTS; i++)
+    // Tranform each vertex
+    for (int i = 0; i < MESH_VERTEX_COUNT; i++)
     {
-        // Get the point to process
-        vec3_t point = cube_points[i];
+        vec3_t vertex = cube_vertices[i];
 
         // Rotate the point around the Y axis
-        vec3_t transformed_point = vec3_rotate_x(point, cube_rotation.x);
-        transformed_point = vec3_rotate_y(transformed_point, cube_rotation.y);
-        transformed_point = vec3_rotate_z(transformed_point, cube_rotation.z);
+        vec3_t transformed_vertex = vec3_rotate_x(vertex, cube_rotation.x);
+        transformed_vertex = vec3_rotate_y(transformed_vertex, cube_rotation.y);
+        transformed_vertex = vec3_rotate_z(transformed_vertex, cube_rotation.z);
 
         // Translate the point away from the camera
-        transformed_point.z -= camera.position.z;
+        transformed_vertex.z -= camera.position.z;
 
-        // Project the point on the screen        
-        projected_points[i] = project(transformed_point);
+        transformed_mesh_vertices[i] = transformed_vertex;
+    }
+
+    // For each face, project its vertices
+    for (int i = 0; i < MESH_FACE_COUNT; i++)
+    {
+        face_t face = cube_faces[i];
+
+        triangle_t triangle;
+        // Project the point on the screen
+        for (int j = 0; j < 3; j++)
+        {
+            triangle.points[j] = project(transformed_mesh_vertices[face.indices[j]]);
+            triangle.points[j].x += (window_width * 0.5f);
+            triangle.points[j].y += (window_height * 0.5f);
+        }
+        projected_mesh_faces[i] = triangle;
     }
 }
 
@@ -114,16 +122,10 @@ void render(void)
     draw_point_grid(100, 100, 0xFFAAAAAA);
     // draw_rectangle(100, 100, 300, 200, 0xFF9922F0);
 
-    for (int i = 0; i < NUMBER_OF_POINTS; i++)
+    for (int i = 0; i < MESH_FACE_COUNT; i++)
     {
-        vec2_t projected_point = projected_points[i];
-
-        draw_rectangle(
-            projected_point.x + (window_width * 0.5f),
-            projected_point.y + (window_height * 0.5f),
-            5,
-            5,
-            0xFFFFFF00);
+        triangle_t triangle = projected_mesh_faces[i];
+        draw_triangle(triangle, 0xFFFFFF00);
     }
 
     render_color_buffer();

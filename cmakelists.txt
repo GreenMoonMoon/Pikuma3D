@@ -11,7 +11,9 @@ set(SDL2_LIBRARY_DIRS external/SDL2/lib/x64)
 set(SOURCE_FILES
     src/main.c
     src/display.c
-    src/vector.c)
+    src/vector.c
+    src/mesh.c
+    src/array.c)
 
 add_executable(pikuma3d ${SOURCE_FILES})
 target_include_directories(pikuma3d PUBLIC ${SDL2_INCLUDE_DIR})

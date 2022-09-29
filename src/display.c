@@ -99,6 +99,31 @@ void draw_rectangle(int x, int y, int width, int height, uint32_t color)
     }
 }
 
+void draw_line(int x0, int y0, int x1, int y1, uint32_t color) {
+    int dx = x1 - x0;
+    int dy = y1 - y0;
+    int steps;
+
+    steps = (abs(dx) >= abs(dy)) ? abs(dx) : abs(dy);
+
+    float current_x = x0;
+    float current_y = y0;
+    float x_step = dx / (float)steps;
+    float y_step = dy / (float)steps;
+    
+    for (int i = 0; i <= steps; i++) {
+        draw_pixel(round(current_x), round(current_y), color);
+        current_x += x_step;
+        current_y += y_step;
+    }
+}
+
+void draw_triangle(triangle_t triangle, uint32_t color) {
+    draw_line(triangle.points[0].x, triangle.points[0].y, triangle.points[1].x, triangle.points[1].y, color);
+    draw_line(triangle.points[1].x, triangle.points[1].y, triangle.points[2].x, triangle.points[2].y, color);
+    draw_line(triangle.points[2].x, triangle.points[2].y, triangle.points[0].x, triangle.points[0].y, color);
+}
+
 void render_color_buffer(void)
 {
     SDL_UpdateTexture(color_buffer_texture, NULL, color_buffer, (int)(sizeof(uint32_t) * window_width));
