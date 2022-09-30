@@ -34,7 +34,8 @@ vec2_t project(const vec3_t point)
 void setup(void)
 {
     // Load the cube mesh into the mesh global
-    load_cube_mesh();
+    // load_cube_mesh();
+    load_obj_file("C:/Users/josue/Projects/Pikuma3D/assets/objs/cube.obj");
 
     // Color format: ARGB
     // Allocate memory for color_buffer
@@ -50,7 +51,10 @@ void setup(void)
 
 void teardown(void)
 {
+    // Free resources
     free(color_buffer);
+    array_free(mesh.vertices);
+    array_free(mesh.faces);
 }
 
 void process_input(void)

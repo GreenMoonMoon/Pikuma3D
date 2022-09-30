@@ -20,4 +20,6 @@ extern mesh_t mesh;
 
 void load_cube_mesh(void);
 
+void load_obj_file(char *file_path);
+
 #endif // MESH_H

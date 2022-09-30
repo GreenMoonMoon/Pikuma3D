@@ -1,6 +1,8 @@
 #include "mesh.h"
 #include "array.h"
+#include "obj_parser.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 mesh_t mesh = {
     .vertices = NULL,
@@ -41,4 +43,18 @@ void load_cube_mesh(void) {
     mesh.rotation.x = 0.01f;
     mesh.rotation.y = 0.1f;
     mesh.rotation.z = 0.05f;
+}
+
+void load_obj_file(char *file_path) {
+    FILE *fp;
+    char * line = NULL;
+    size_t length = 0;
+    size_t read = 0;
+
+    fp = fopen(file_path, "r");
+    if (fp == NULL) return;
+
+    
+
+    fclose(fp);
 }
